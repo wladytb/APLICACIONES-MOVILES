@@ -57,7 +57,6 @@ public class principal extends AppCompatActivity {
     }
 
     public void consumirRetrofit() {
-        lblRevista.setText("");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(" https://revistas.uteq.edu.ec/").
                         addConverterFactory(GsonConverterFactory.create()).build();
@@ -71,9 +70,10 @@ public class principal extends AppCompatActivity {
                     lblRevista.setText("estado: " + response.code());
                     return;
                 }
+                lblRevista.setText("servicio web consumido con Retrofit \n");
                 List<revista> lista = response.body();
                 for (revista rvt : lista) {
-                    String data = "servicio web consumido con Retrofit \n ";
+                    String data = "";
                     data += "issue_id: " + rvt.getIssue_id() + "\n" +
                             "volume: " + rvt.getVolume() + "\n" +
                             "number: " + rvt.getNumber() + "\n" +
@@ -94,15 +94,15 @@ public class principal extends AppCompatActivity {
     }
 
     public void consumirGoolgeVolley() {
-        lblRevista.setText("");
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
                 "https://revistas.uteq.edu.ec/ws/issues.php?j_id=" + Integer.parseInt(txtId.getText().toString()), null,
                 new com.android.volley.Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        lblRevista.setText("servicio web consumido con Google Volley \n");
                         for (int i = 0; i < response.length(); i++) {
-                            String data = "servicio web consumido con Google Volley \n";
+                            String data = "";
                             try {
                                 JSONObject jsonObject = new JSONObject(response.get(i).toString());
                                 data += "issue_id: " + jsonObject.getString("issue_id") + "\n" +

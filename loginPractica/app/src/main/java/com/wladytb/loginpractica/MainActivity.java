@@ -46,17 +46,17 @@ public class MainActivity extends AppCompatActivity {
                         if (!response.isSuccessful()) {
                             lblerror.setText("estado: " + response.code());
                             return;
-                        }
-                        String responseString = response.body();
-                        if (responseString.equals("Login Correcto!")) {
-                            Intent intent = new Intent(MainActivity.this, principal.class);
-                            MainActivity.this.startActivity(intent);
-                        }else{
-                            lblerror.setText(responseString);
-                            return;
+                        } else {
+                            String responseString = response.body();
+                            if (responseString.equals("Login Correcto!")) {
+                                Intent intent = new Intent(MainActivity.this, principal.class);
+                                MainActivity.this.startActivity(intent);
+                            } else {
+                                lblerror.setText(responseString);
+                                return;
+                            }
                         }
                     }
-
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
                         lblerror.setText(t.getMessage());
