@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.wladytb.practicarecyclerview.R;
 import com.wladytb.practicarecyclerview.modelo.revista;
 
+import java.util.Date;
 import java.util.List;
 
 public class listAdapter extends RecyclerView.Adapter<listAdapter.ViewHolder> {
@@ -46,7 +48,7 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.ViewHolder> {
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imgRevista;
-        TextView vol,num,name,publi;
+        TextView vol,num,name,publi,doi;
         ViewHolder(View itView){
             super(itView);
             imgRevista=itView.findViewById(R.id.imgRevista);
@@ -54,13 +56,16 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.ViewHolder> {
             num=itView.findViewById(R.id.txtNum);
             name=itView.findViewById(R.id.txtNameRevista);
             publi=itView.findViewById(R.id.txtpublicacion);
+            doi=itView.findViewById(R.id.txtdoi);
         }
         void bindData(final revista rv)
         {
+            Picasso.get().load(rv.getCover()).into(imgRevista);
             vol.setText("Volumen: "+rv.getVolume());
             num.setText("Número: "+rv.getNumber() +" ("+rv.getYear()+")");
             name.setText(rv.getTitle());
-            publi.setText(rv.getDate_published());
+            publi.setText("Publicado: "+rv.getDate_published());
+            doi.setText("Doi: "+rv.getDoi());
         }
     }
 }
