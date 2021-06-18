@@ -4,7 +4,7 @@ programas app movil
 <h1>primer trabajo</h1>
 cuando se abre la aplicación aparece este login <br/>
 aquí ingresa el usuario "cristian" password "cristian123"<br/>
-verifica si existe ese usario consumiendo un servicio proporcionado por el docente. <br/>
+verifica si existe ese usario consumiendo un servicio proporcionado por el docente.
 ![](capturas-loginPractica/login.jpg)
 
 una vez validado el ususario se abrirá el buscador<br/>
