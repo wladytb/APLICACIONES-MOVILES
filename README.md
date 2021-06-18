@@ -5,7 +5,7 @@ programas app movil
 cuando se abre la aplicación aparece este login <br/>
 aquí ingresa el usuario "cristian" password "cristian123"<br/>
 verifica si existe ese usario consumiendo un servicio proporcionado por el docente<br/>
-![](capturas-loginPractica/login1.jpg)
+![](capturas-loginPractica/principal.jpg)
 
 una vez validado el ususario se abrirá el buscador<br/>
 aquí se puede buscar las revistas consumiendo un web service mendiante Retrofit o Google Volley<br/>
